@@ -8,9 +8,9 @@
 
 ## Live Demo
 
-- shaadisharthi.theworkpc.com for **Customers**
-- shaadisharthi.theworkpc.com/provider for **Service Providers**
-- shaadisharthi.theworkpc.com/admin for **Admins**
+- **Customer Portal**: [shaadisharthi.theworkpc.com](https://shaadisharthi.theworkpc.com)
+- **Provider Portal**: [shaadisharthi.theworkpc.com/provider](https://shaadisharthi.theworkpc.com/provider)
+- **Admin Panel**: [shaadisharthi.theworkpc.com/admin](https://shaadisharthi.theworkpc.com/admin)
 
 ---
 
