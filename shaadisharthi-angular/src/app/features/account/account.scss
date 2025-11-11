@@ -1,0 +1,41 @@
+.profile-card {
+  img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+  }
+}
+
+.social-links {
+  a {
+    color: #6c757d;
+    margin: 0 0.5rem;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #0d6efd;
+    }
+  }
+}
+
+.nav-tabs {
+  .nav-link {
+    color: #495057;
+
+    &.active {
+      color: #0d6efd;
+    }
+  }
+}
+
+.label {
+  color: #495057;
+}
+
+.text-danger small {
+  font-size: 0.8rem;
+}
+
+.spinner-border {
+  margin-right: 0.5rem;
+}

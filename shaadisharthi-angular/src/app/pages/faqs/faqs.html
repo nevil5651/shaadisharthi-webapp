@@ -1,0 +1,233 @@
+<main id="main" class="main">
+  <!-- Page title section with breadcrumb navigation -->
+  <div class="pagetitle">
+    <h1>Frequently Asked Questions</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+        <li class="breadcrumb-item active">Frequently Asked Questions</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Main FAQ section divided into two columns -->
+  <section class="section faq">
+    <div class="row">
+      <!-- Left column: Basic questions and Account management -->
+      <div class="col-lg-6">
+        <!-- Card for basic questions -->
+        <div class="card basic">
+          <div class="card-body">
+            <h5 class="card-title">Basic Questions for Service Providers</h5>
+            <div>
+              <h6>1. How do I register as a service provider on SaadiSarthi?</h6>
+              <p>To register, click on the "Become a Provider" button on our homepage and fill out the registration form with your business details, contact information, and service offerings. Our team will review your application and get back to you within 2 business days.</p>
+            </div>
+            <div class="pt-2">
+              <h6>2. What types of services can I offer on SaadiSarthi?</h6>
+              <p>We accept a wide range of service providers including home services (plumbing, electrical, cleaning), tutors, fitness trainers, beauty professionals, event planners, and more. If you're unsure whether your service qualifies, please contact our support team.</p>
+            </div>
+            <div class="pt-2">
+              <h6>3. How does the payment system work?</h6>
+              <p>Payments are processed through our secure platform. Customers pay SaadiSarthi when booking, and we transfer funds to your account (minus our service fee) within 3-5 business days after service completion.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card for account and profile management with accordion -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Account & Profile Management</h5>
+            <div class="accordion accordion-flush" id="faq-group-1">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse">How do I update my service offerings or prices?</button>
+                </h2>
+                <div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                  <div class="accordion-body">You can update your services and pricing at any time through your provider dashboard. Navigate to "My Services" section where you can add new services, modify existing ones, or adjust your pricing. Changes are reflected immediately on your profile.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsOne-2" type="button" data-bs-toggle="collapse">Can I operate in multiple service areas?</button>
+                </h2>
+                <div id="faqsOne-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                  <div class="accordion-body">Yes, you can specify multiple service areas in your profile settings. You can set different service radii for different locations and even adjust pricing based on travel distance if needed.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsOne-3" type="button" data-bs-toggle="collapse">How do I manage my availability calendar?</button>
+                </h2>
+                <div id="faqsOne-3" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                  <div class="accordion-body">The availability calendar in your dashboard allows you to set your working hours, block off unavailable times, and manage appointments. You can sync it with your personal calendar to avoid double bookings.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsOne-4" type="button" data-bs-toggle="collapse">What happens if I need to cancel a booking?</button>
+                </h2>
+                <div id="faqsOne-4" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                  <div class="accordion-body">We understand emergencies happen. You can cancel a booking through your dashboard, but frequent cancellations may affect your provider rating. We recommend canceling at least 24 hours in advance whenever possible.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" data-bs-target="#faqsOne-5" type="button" data-bs-toggle="collapse">How can I improve my visibility on the platform?</button>
+                </h2>
+                <div id="faqsOne-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                  <div class="accordion-body">Complete your profile with detailed descriptions, high-quality photos, and competitive pricing. Encourage satisfied customers to leave reviews. Maintain high response rates and good ratings to appear higher in search results.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column: Other FAQ sections (truncated in original) -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+                            <h5 class="card-title">Payments & Commissions</h5>
+                            <div class="accordion accordion-flush" id="faq-group-2">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">What is the commission structure?</button>
+                                    </h2>
+                                    <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                                        <div class="accordion-body">Our standard commission is 15-20% per booking depending on your service category. High-volume providers may qualify for reduced rates. All fees are clearly displayed before you accept each booking.</div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-target="#faqsTwo-2" type="button" data-bs-toggle="collapse">When and how do I get paid?</button>
+                                    </h2>
+                                    <div id="faqsTwo-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                                        <div class="accordion-body">Payments are processed weekly. After service completion and customer approval, funds (minus our commission) are transferred to your registered bank account every Tuesday. The first payment may take 7-10 days for verification.</div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-target="#faqsTwo-3" type="button" data-bs-toggle="collapse">Are there any additional fees?</button>
+                                    </h2>
+                                    <div id="faqsTwo-3" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                                        <div class="accordion-body">There are no hidden fees. Our commission covers platform usage, marketing, and payment processing. Optional premium features like profile boosting may have additional costs, but these are always opt-in.</div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-target="#faqsTwo-4" type="button" data-bs-toggle="collapse">How are tips handled?</button>
+                                    </h2>
+                                    <div id="faqsTwo-4" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                                        <div class="accordion-body">Customers can tip through the app after service completion. Tips are 100% yours with no commission. They're included in your weekly payout.</div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-target="#faqsTwo-5" type="button" data-bs-toggle="collapse">What payment methods do you support?</button>
+                                    </h2>
+                                    <div id="faqsTwo-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                                        <div class="accordion-body">We support direct bank transfers (NEFT/IMPS) to Indian bank accounts. International providers can receive payments via PayPal or Wise. All payments are processed in INR.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Customer Interactions & Support</h5>
+                            <div class="accordion accordion-flush" id="faq-group-3">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" data-bs-target="#faqsThree-1" type="button" data-bs-toggle="collapse">How should I handle customer complaints?</button>
+                                    </h2>
+                                    <div id="faqsThree-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
+                                        <div class="accordion-body">Always remain professional. Listen to the concern and try to resolve it amicably. If unable to resolve, contact SaadiSarthi support immediately. Never engage in arguments. Our team will mediate disputes fairly.</div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-target="#faqsThree-2" type="button" data-bs-toggle="collapse">Can I contact customers directly after booking?</button>
+          </h2>
+          <div id="faqsThree-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
+            <div class="accordion-body">Yes, our system provides secure communication channels. However, all transactions must remain on the platform for your protection. Circumventing the platform may result in account suspension.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-target="#faqsThree-3" type="button" data-bs-toggle="collapse">How does the rating system work?</button>
+          </h2>
+          <div id="faqsThree-3" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
+            <div class="accordion-body">Customers rate on a 5-star scale after each service. Ratings consider punctuality, quality, professionalism, and value. Your overall rating is an average of your last 50 reviews. New providers start with a 5-star rating.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-target="#faqsThree-4" type="button" data-bs-toggle="collapse">What if a customer requests services outside my listed offerings?</button>
+          </h2>
+          <div id="faqsThree-4" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
+            <div class="accordion-body">Politely decline and refer them to your listed services. If it's a variation of your service, you can create a custom quote through the platform, but never provide unlisted services without updating your profile first.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" data-bs-target="#faqsThree-5" type="button" data-bs-toggle="collapse">How do I handle emergency situations during service?</button>
+          </h2>
+          <div id="faqsThree-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
+            <div class="accordion-body">For medical emergencies, call local authorities first, then inform SaadiSarthi support. For property damage, document the situation with photos and contact support immediately. We have insurance partners to handle valid claims.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- Contact support button and modal section -->
+  <section style="display: flex; justify-content: right; align-items: center;">
+    <button type="button" class="btn btn-lg btn-primary" data-bs-toggle="modal" data-bs-target="#yourquery">Contact Support</button>
+    <!-- Modal for submitting a query -->
+    <div class="modal fade" id="yourquery" #yourquery tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Your Query</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <!-- Form for query submission -->
+            <form [formGroup]="queryForm" (ngSubmit)="submitQuery()" class="row g-3" novalidate>
+              <div class="col-12">
+                <label for="subject" class="form-label">Query Subject</label>
+                <input type="text" class="form-control" id="subject" formControlName="subject" [class.is-invalid]="subject?.invalid && subject?.touched">
+                <div *ngIf="subject?.invalid && subject?.touched" class="invalid-feedback">
+                  <div *ngIf="subject?.hasError('required')">Query Subject is required.</div>
+                  <div *ngIf="subject?.hasError('minlength')">Subject must be at least 5 characters long.</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="Query description" id="message" formControlName="message" style="height: 100px;" [class.is-invalid]="message?.invalid && message?.touched"></textarea>
+                  <label for="message">Query Description</label>
+                  <div *ngIf="message?.invalid && message?.touched" class="invalid-feedback">
+                    <div *ngIf="message?.hasError('required')">Query Description is required.</div>
+                    <div *ngIf="message?.hasError('minlength')">Description must be at least 20 characters long.</div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary" [disabled]="queryForm.invalid || isSubmitting">
+                  <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  <span *ngIf="isSubmitting"> Sending...</span>
+                  <span *ngIf="!isSubmitting">Send Query</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

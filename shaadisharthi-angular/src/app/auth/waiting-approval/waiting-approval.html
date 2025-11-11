@@ -1,0 +1,27 @@
+<!-- 
+  Final step after business details submission.
+  User waits for admin approval.
+-->
+<div class="container">
+  <h1>Registration Submitted Successfully</h1>
+
+  <div class="message">
+    <p>Thank you for registering as a service provider.</p>
+    <p><strong>Your account is currently pending approval by our admin team.</strong></p>
+    <p>We will review your business details and notify you once your account has been approved.</p>
+    <p>This process typically takes 1-2 business days.</p>
+  </div>
+
+  <p>You will receive an email notification once your account is approved.</p>
+
+  <!-- Support contact -->
+  <div class="contact">
+    <p>If you have any questions, please contact our support team at:</p>
+    <p><a [href]="'mailto:' + env.supportEmail">{{ env.supportEmail }}</a></p>
+  </div>
+
+  <!-- Logout button -->
+  <div class="actions">
+    <button (click)="logout()" class="btn btn-primary">Logout</button>
+  </div>
+</div>

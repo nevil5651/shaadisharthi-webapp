@@ -1,0 +1,81 @@
+.faqs-container {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #6c757d;
+    }
+  }
+
+  .faqs-content {
+    display: grid;
+    gap: 3rem;
+
+    @media (min-width: 992px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+    color: #495057;
+  }
+
+  .mat-form-field {
+    margin-bottom: 1rem;
+  }
+
+  .faq-list {
+    .mat-expansion-panel {
+      margin-bottom: 1rem;
+      border-radius: 8px !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .mat-expansion-panel-header-title {
+        font-weight: 500;
+      }
+    }
+
+    .spinner-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 200px;
+    }
+  }
+
+  .add-query {
+    .full-width {
+      width: 100%;
+    }
+
+    button[mat-flat-button] {
+      height: 48px;
+      font-size: 1rem;
+    }
+  }
+}

@@ -1,0 +1,327 @@
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Account</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+        <li class="breadcrumb-item active">Account</li>
+      </ol>
+    </nav>
+  </div>
+  <section class="section profile">
+    <div class="row">
+      <div class="col-xl-4">
+        <div class="card">
+          <div
+            class="card-body profile-card pt-4 d-flex flex-column align-items-center"
+          >
+            <img
+              src="assets/img/profile-img.jpg"
+              alt="Profile"
+              class="rounded-circle"
+            />
+            <h2>{{ accountData?.name || "N/A" }}</h2>
+            <h3>{{ accountData?.business_name || "N/A" }}</h3>
+            <div class="social-links mt-2">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-8">
+        <div class="card">
+          <div class="card-body pt-3">
+            <ul class="nav nav-tabs nav-tabs-bordered">
+              <li class="nav-item">
+                <button
+                  class="nav-link active"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile-overview"
+                >
+                  Overview
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile-edit"
+                >
+                  Edit Profile
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile-documents"
+                >
+                  Documents
+                </button>
+              </li>
+              <li class="nav-item">
+                <button
+                  class="nav-link"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile-change-password"
+                >
+                  Change Password
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content pt-2">
+              <div
+                class="tab-pane fade show active profile-overview"
+                id="profile-overview"
+              >
+                <h5 class="card-title">Profile Details</h5>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Full Name</div>
+                  <div class="col-lg-9 col-md-8">
+                    {{ accountData?.name || "N/A" }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">State</div>
+                  <div class="col-lg-9 col-md-8">
+                    {{ accountData?.state || "N/A" }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Phone</div>
+                  <div class="col-lg-9 col-md-8">
+                    {{ accountData?.phone || "N/A" }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Alternate Phone</div>
+                  <div class="col-lg-9 col-md-8">
+                    {{ accountData?.alternate_phone || "N/A" }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Email</div>
+                  <div class="col-lg-9 col-md-8">
+                    {{ accountData?.email || "N/A" }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Business Name</div>
+                  <div class="col-lg-9 col-md-8">
+                    {{ accountData?.business_name || "N/A" }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Address</div>
+                  <div class="col-lg-9 col-md-8">
+                    {{ accountData?.address || "N/A" }}
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                <form [formGroup]="editForm" (ngSubmit)="onEditSubmit()">
+                  <div class="row mb-3">
+                    <label
+                      for="fullName"
+                      class="col-md-4 col-lg-3 col-form-label"
+                      >Full Name</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        formControlName="name"
+                        type="text"
+                        class="form-control"
+                        id="fullName"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="state" class="col-md-4 col-lg-3 col-form-label"
+                      >State</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        formControlName="state"
+                        type="text"
+                        class="form-control"
+                        id="state"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="phone" class="col-md-4 col-lg-3 col-form-label"
+                      >Phone</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        formControlName="phone"
+                        type="text"
+                        class="form-control"
+                        id="phone"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label
+                      for="alternatephone"
+                      class="col-md-4 col-lg-3 col-form-label"
+                      >Alternate Phone</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        formControlName="alternate_phone"
+                        type="text"
+                        class="form-control"
+                        id="alternatephone"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label for="email" class="col-md-4 col-lg-3 col-form-label"
+                      >Email</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        [value]="accountData?.email"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label
+                      for="Businessname"
+                      class="col-md-4 col-lg-3 col-form-label"
+                      >Business Name</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        formControlName="business_name"
+                        type="text"
+                        class="form-control"
+                        id="Businessname"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label
+                      for="address"
+                      class="col-md-4 col-lg-3 col-form-label"
+                      >Address</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        formControlName="address"
+                        type="text"
+                        class="form-control"
+                        id="address"
+                      />
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button
+                      type="submit"
+                      class="btn btn-primary"
+                      [disabled]="editForm.invalid || loading"
+                    >
+                      <span
+                        *ngIf="loading"
+                        class="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Save Changes
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div
+                class="tab-pane fade profile-edit pt-3"
+                id="profile-documents"
+              >
+                <h5 class="card-title">Document Details</h5>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">GST Number</div>
+                  <div class="col-lg-5 col-md-8">23456789876543</div>
+                  <div class="col-lg-4 col-md-8">Verified</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Aadhaar Number</div>
+                  <div class="col-lg-5 col-md-8">12344321234</div>
+                  <div class="col-lg-4 col-md-8">Verified</div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">PAN Number</div>
+                  <div class="col-lg-5 col-md-8">123456789</div>
+                  <div class="col-lg-4 col-md-8">Verified</div>
+                </div>
+              </div>
+              <div class="tab-pane fade pt-3" id="profile-change-password">
+                <form
+                  [formGroup]="passwordForm"
+                  (ngSubmit)="onChangePasswordSubmit()"
+                >
+                  <div class="row mb-3">
+                    <label
+                      for="currentPassword"
+                      class="col-md-4 col-lg-3 col-form-label"
+                      >Current Password</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        formControlName="currentPassword"
+                        type="password"
+                        class="form-control"
+                        id="currentPassword"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label
+                      for="newPassword"
+                      class="col-md-4 col-lg-3 col-form-label"
+                      >New Password</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        formControlName="newPassword"
+                        type="password"
+                        class="form-control"
+                        id="newPassword"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label
+                      for="renewPassword"
+                      class="col-md-4 col-lg-3 col-form-label"
+                      >Re-enter New Password</label
+                    >
+                    <div class="col-md-8 col-lg-9">
+                      <input
+                        formControlName="renewPassword"
+                        type="password"
+                        class="form-control"
+                        id="renewPassword"
+                      />
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">
+                      Change Password
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

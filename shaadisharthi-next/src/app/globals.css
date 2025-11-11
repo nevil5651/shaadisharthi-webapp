@@ -1,0 +1,672 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #e83e8c; /* Romantic pink */
+  --secondary: #6f42c1; /* Royal purple */
+  --accent: #fd7e14; /* Vibrant orange */
+  --light: #f8f9fa;
+  --dark: #343a40;
+}
+
+.text-center.py-8.min-h-\[50px\] {
+  min-height: 50px !important;
+  visibility: visible !important;
+  position: relative !important;
+  display: block !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Poppins", sans-serif;
+}
+
+/* Landing Page */
+
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80")
+      center/cover no-repeat;
+  height: 90vh;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.logo-text {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, var(--secondary), var(--primary));
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: var(--accent);
+}
+
+.btn-secondary:hover {
+  background: #e66a00;
+  transform: translateY(-2px);
+}
+
+#home,
+#services,
+#about,
+#testimonials,
+#contact {
+  scroll-margin-top: 40px; /* Header height (~30px) + desired offset (12px) */
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Landing  Page */
+
+.font-serif {
+  font-family: "Playfair Display", serif;
+}
+
+/* Auth Page Background */
+.auth-page {
+  background: linear-gradient(135deg, #fdf2f8 0%, #f5f3ff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Form Elements */
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+}
+
+.form-input {
+  @apply w-full py-3 px-4 pl-10 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent;
+}
+
+.password-toggle {
+  @apply absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600;
+}
+
+/* Gradient Button */
+.gradient-btn {
+  @apply w-full py-3 text-white font-medium rounded-lg transition-all;
+  background: linear-gradient(to right, #e83e8c, #6f42c1);
+}
+
+.gradient-btn:hover {
+  background: linear-gradient(to right, #5d32b0, #d62e7c);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Styles */
+/* Add these to your existing globals.css file */
+
+/* Vendor page specific styles */
+.filter-section {
+  @apply rounded-lg shadow-sm p-6 mb-8;
+}
+
+.filter-transition {
+  transition: all 0.3s ease;
+}
+
+.vendor-card {
+  @apply rounded-lg shadow-sm overflow-hidden transition-shadow;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.vendor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.vendor-card .flex-grow {
+  flex-grow: 1;
+}
+
+.vendor-card:hover {
+  @apply shadow-md;
+}
+/* Better image rendering */
+.vendor-card img {
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+}
+
+/* Fix for Firefox layout issues */
+@-moz-document url-prefix() {
+  .vendor-grid {
+    grid-auto-rows: 1fr;
+  }
+
+  .vendor-card {
+    min-height: 400px;
+  }
+}
+
+/* Prevent layout shift during image load 
+.vendor-card .relative {
+  aspect-ratio: 4/3;
+}
+*/
+
+.category-icon {
+  @apply w-10 h-10 rounded-full flex items-center justify-center mr-3;
+}
+
+.category-tag {
+  @apply absolute top-3 right-3 text-white text-xs px-2 py-1 rounded-full;
+}
+
+/* Color classes for different categories */
+.bg-indigo-600 {
+  background-color: #4f46e5;
+}
+.bg-purple-600 {
+  background-color: #9333ea;
+}
+.bg-green-600 {
+  background-color: #16a34a;
+}
+.bg-pink-600 {
+  background-color: #db2777;
+}
+.bg-red-600 {
+  background-color: #dc2626;
+}
+.bg-blue-600 {
+  background-color: #2563eb;
+}
+.bg-yellow-600 {
+  background-color: #ca8a04;
+}
+.bg-teal-600 {
+  background-color: #0d9488;
+}
+.bg-orange-600 {
+  background-color: #ea580c;
+}
+
+.bg-indigo-100 {
+  background-color: #e0e7ff;
+}
+.bg-purple-100 {
+  background-color: #f3e8ff;
+}
+.bg-green-100 {
+  background-color: #dcfce7;
+}
+.bg-pink-100 {
+  background-color: #fce7f3;
+}
+.bg-red-100 {
+  background-color: #fee2e2;
+}
+.bg-blue-100 {
+  background-color: #dbeafe;
+}
+.bg-yellow-100 {
+  background-color: #fef9c3;
+}
+.bg-teal-100 {
+  background-color: #ccfbf1;
+}
+.bg-orange-100 {
+  background-color: #ffedd5;
+}
+
+.text-indigo-600 {
+  color: #4f46e5;
+}
+.text-purple-600 {
+  color: #9333ea;
+}
+.text-green-600 {
+  color: #16a34a;
+}
+.text-pink-600 {
+  color: #db2777;
+}
+.text-red-600 {
+  color: #dc2626;
+}
+.text-blue-600 {
+  color: #2563eb;
+}
+.text-yellow-600 {
+  color: #ca8a04;
+}
+.text-teal-600 {
+  color: #0d9488;
+}
+.text-orange-600 {
+  color: #ea580c;
+}
+
+/*filter styles  */
+
+.bg-primary {
+  background-color: #e83e8c;
+}
+.bg-secondary {
+  background-color: #6f42c1;
+}
+.bg-secondary-dark {
+  background-color: #5d32b0;
+}
+.text-primary {
+  color: #e83e8c;
+}
+.text-secondary {
+  color: #6f42c1;
+}
+.border-primary {
+  border-color: #e83e8c;
+}
+.focus\:ring-primary:focus {
+  --tw-ring-color: rgba(232, 62, 140, 0.5);
+}
+
+/* Gradient background for service hero */
+.service-hero {
+  background: linear-gradient(
+    135deg,
+    rgba(232, 62, 140, 0.1) 0%,
+    rgba(111, 66, 193, 0.1) 100%
+  );
+}
+
+/* Card hover animations */
+.media-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.media-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Dynamic rating stars */
+.rating-star {
+  transition: color 0.2s ease;
+}
+
+.rating-star:hover {
+  color: #e83e8c;
+}
+
+/* Review form transitions */
+.review-form-input {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-form-input:focus {
+  border-color: #e83e8c;
+  box-shadow: 0 0 0 2px rgba(232, 62, 140, 0.2);
+}
+
+/* ==================== */
+/* DARK MODE ENHANCEMENTS */
+/* ==================== */
+
+/* System-level dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dark-bg-primary: #111827;
+    --dark-bg-secondary: #1f2937;
+    --dark-bg-tertiary: #374151;
+    --dark-text-primary: #f9fafb;
+    --dark-text-secondary: #e5e7eb;
+    --dark-text-muted: #9ca3af;
+    --dark-border: #4b5563;
+    --dark-ring: rgba(199, 210, 254, 0.5);
+  }
+
+  /* Smooth transitions for theme switching */
+  * {
+    transition: background-color 0.2s ease, border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  /* Enhanced scrollbar for dark mode */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--dark-bg-secondary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--dark-bg-tertiary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+  }
+
+  /* Selection color for dark mode */
+  ::selection {
+    background: rgba(79, 70, 229, 0.3);
+    color: var(--dark-text-primary);
+  }
+
+  /* Placeholder text color */
+  ::-webkit-input-placeholder {
+    color: var(--dark-text-muted);
+  }
+  ::-moz-placeholder {
+    color: var(--dark-text-muted);
+  }
+  :-ms-input-placeholder {
+    color: var(--dark-text-muted);
+  }
+  :-moz-placeholder {
+    color: var(--dark-text-muted);
+  }
+
+  /* Focus styles for better accessibility */
+  .focus\:ring-primary:focus {
+    --tw-ring-color: rgba(199, 210, 254, 0.5) !important;
+  }
+
+  /* Enhanced images in dark mode */
+  img {
+    filter: brightness(0.9) contrast(1.1);
+  }
+
+  /* SVG icon enhancements */
+  svg:not([class*="text-"]) {
+    color: var(--dark-text-secondary);
+  }
+
+  /* Code and preformatted text */
+  code,
+  pre {
+    background-color: var(--dark-bg-tertiary) !important;
+    color: var(--dark-text-primary) !important;
+  }
+
+  /* Table enhancements */
+  table {
+    border-color: var(--dark-border) !important;
+  }
+
+  th,
+  td {
+    border-color: var(--dark-border) !important;
+  }
+
+  /* Loading states */
+  .animate-pulse {
+    background-color: var(--dark-bg-tertiary);
+  }
+
+  /* Gradient text enhancements */
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Card hover effects */
+  .shadow-sm:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2),
+      0 2px 4px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Form enhancements */
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    background-color: var(--dark-bg-secondary);
+    border-color: var(--dark-border);
+  }
+
+  /* Disabled state enhancements */
+  [disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  /* Button enhancements */
+  button:not(:disabled):hover {
+    transform: translateY(-1px);
+  }
+
+  /* Animation for toast notifications */
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* .Toastify__toast {
+    animation: slideIn 0.3s ease-out;
+  } */
+}
+
+/* Manual dark mode class (when user toggles dark mode) */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+
+  --dark-bg-primary: #111827;
+  --dark-bg-secondary: #1f2937;
+  --dark-bg-tertiary: #374151;
+  --dark-text-primary: #f9fafb;
+  --dark-text-secondary: #e5e7eb;
+  --dark-text-muted: #9ca3af;
+  --dark-border: #4b5563;
+  --dark-ring: rgba(199, 210, 254, 0.5);
+}
+
+/* Print styles for dark mode */
+@media print and (prefers-color-scheme: dark) {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a::after {
+    content: " (" attr(href) ")";
+  }
+}
+
+/* ==================== */
+/* DARK MODE OVERRIDES  */
+/* ==================== */
+
+.dark body {
+  background: var(--dark-bg-primary, #0a0a0a);
+  color: var(--dark-text-primary, #ededed);
+}
+
+/* Headings and text */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--dark-text-primary, #f9fafb);
+}
+
+.dark p,
+.dark label {
+  color: var(--dark-text-secondary, #e5e7eb);
+}
+
+/* Hero section */
+.dark .hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80")
+      center/cover no-repeat;
+}
+
+/* Service / vendor cards */
+.dark .service-card,
+.dark .vendor-card {
+  background-color: var(--dark-bg-secondary, #1f2937);
+  color: var(--dark-text-primary, #f9fafb);
+  border-color: var(--dark-border, #374151);
+}
+
+.dark .service-card:hover,
+.dark .vendor-card:hover {
+  background-color: var(--dark-bg-tertiary, #374151);
+}
+
+/* Auth / login page */
+.dark .auth-page {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+}
+
+/* Form inputs */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: var(--dark-bg-secondary, #1f2937);
+  border-color: var(--dark-border, #374151);
+  color: var(--dark-text-primary, #f9fafb);
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: var(--dark-text-muted, #9ca3af);
+}
+
+/* Buttons */
+.dark .btn-primary {
+  background: linear-gradient(
+    45deg,
+    var(--secondary, #6f42c1),
+    var(--primary, #e83e8c)
+  );
+  color: white;
+}
+
+.dark .btn-secondary {
+  background: #374151;
+  color: white;
+}
+
+.dark .btn-secondary:hover {
+  background: #4b5563;
+}
+
+/* Tabs, modals, etc. */
+.dark .tab-content {
+  background-color: var(--dark-bg-secondary, #1f2937);
+  color: var(--dark-text-primary, #f9fafb);
+}
+
+.dark .modal,
+.dark .filter-section {
+  background-color: var(--dark-bg-secondary, #1f2937);
+  color: var(--dark-text-primary, #f9fafb);
+  border-color: var(--dark-border, #374151);
+}
+
+/* Scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: var(--dark-bg-secondary, #1f2937);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--dark-bg-tertiary, #374151);
+}
+

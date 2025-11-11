@@ -1,0 +1,23 @@
+# Eclipse specific
+.settings/
+.classpath
+.project
+bin/
+target/
+
+# Build artifacts
+*.war
+out/
+
+# Logs and temp files
+*.log
+temp/
+*.tmp
+
+.env
+*.env
+docker/.env
+
+# Sensitive configs
+src/main/resources/application.properties
+src/main/resources/config.properties

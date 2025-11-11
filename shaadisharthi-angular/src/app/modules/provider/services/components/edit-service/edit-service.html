@@ -1,0 +1,143 @@
+<!-- Main content wrapper for the edit service page. -->
+<main id="main" class="main">
+  <!-- Page title and breadcrumb navigation. -->
+  <div class="pagetitle">
+    <h1>Edit Service</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/dashboard">Home</a></li>
+        <li class="breadcrumb-item"><a routerLink="/services">Services</a></li>
+        <li class="breadcrumb-item active">Edit</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Main section with loading spinner and conditional content. -->
+  <section class="section">
+    <!-- Loading Spinner -->
+    <div *ngIf="isLoading$ | async" class="d-flex justify-content-center my-5">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Container for when loading is complete. -->
+    <ng-container *ngIf="(isLoading$ | async) === false">
+      <div class="card" *ngIf="service$ | async; else notFound">
+        <div class="card-body">
+          <h5 class="card-title">Edit Service Details</h5>
+
+          <!-- Reactive form for editing service details. -->
+          <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- Service Name input. -->
+            <div class="row mb-3">
+              <label for="name" class="col-sm-2 col-form-label">Service Name</label>
+              <div class="col-sm-10">
+                <input type="text" id="name" formControlName="name" class="form-control"
+                  [class.is-invalid]="serviceForm.get('name')?.invalid && serviceForm.get('name')?.touched">
+                <div *ngIf="serviceForm.get('name')?.invalid && serviceForm.get('name')?.touched" class="invalid-feedback">
+                  <div *ngIf="serviceForm.get('name')?.errors?.['required']">Service name is required.</div>
+                  <div *ngIf="serviceForm.get('name')?.errors?.['minlength']">Name must be at least 3 characters.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Category input. -->
+            <div class="row mb-3">
+              <label for="category" class="col-sm-2 col-form-label">Category</label>
+              <div class="col-sm-10">
+                <input type="text" id="category" formControlName="category" class="form-control"
+                  [class.is-invalid]="serviceForm.get('category')?.invalid && serviceForm.get('category')?.touched">
+                <div *ngIf="serviceForm.get('category')?.invalid && serviceForm.get('category')?.touched" class="invalid-feedback">
+                  <div *ngIf="serviceForm.get('category')?.errors?.['required']">Category is required.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Description textarea. -->
+            <div class="row mb-3">
+              <label for="description" class="col-sm-2 col-form-label">Description</label>
+              <div class="col-sm-10">
+                <textarea id="description" formControlName="description" class="form-control" style="height: 100px"
+                  [class.is-invalid]="serviceForm.get('description')?.invalid && serviceForm.get('description')?.touched"></textarea>
+                <div *ngIf="serviceForm.get('description')?.invalid && serviceForm.get('description')?.touched" class="invalid-feedback">
+                  <div *ngIf="serviceForm.get('description')?.errors?.['required']">Description is required.</div>
+                  <div *ngIf="serviceForm.get('description')?.errors?.['maxlength']">Description cannot exceed 500 characters.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Price input. -->
+            <div class="row mb-3">
+              <label for="price" class="col-sm-2 col-form-label">Price</label>
+              <div class="col-sm-10">
+                <input type="number" id="price" formControlName="price" class="form-control"
+                  [class.is-invalid]="serviceForm.get('price')?.invalid && serviceForm.get('price')?.touched">
+                <div *ngIf="serviceForm.get('price')?.invalid && serviceForm.get('price')?.touched" class="invalid-feedback">
+                  <div *ngIf="serviceForm.get('price')?.errors?.['required']">Price is required.</div>
+                  <div *ngIf="serviceForm.get('price')?.errors?.['min']">Price must be a positive number.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Media section: Existing media previews and upload input. -->
+            <div class="row mb-3" >
+              <label class="col-sm-2 col-form-label">Media</label>
+              <div class="col-sm-10">
+                <div class="d-flex flex-wrap gap-2 mb-3" formArrayName="media" *ngIf="media.controls.length > 0">
+                  <div *ngFor="let mediaControl of media.controls; let i = index" [formGroupName]="i" class="position-relative">
+                    <ng-container [ngSwitch]="mediaControl.get('type')?.value">
+                      <img *ngSwitchCase="'image'" [src]="mediaControl.get('url')?.value" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                      <video *ngSwitchCase="'video'" [src]="mediaControl.get('url')?.value" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;" muted></video>
+                    </ng-container>
+                    <button type="button" (click)="removeMedia(mediaControl.get('id')?.value)" class="btn btn-danger btn-sm position-absolute top-0 end-0" title="Delete Media">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </div>
+                <p *ngIf="media.controls.length === 0" class="text-muted">No media has been uploaded for this service.</p>
+
+                <!-- Media Upload Input -->
+                <label for="mediaFile" class="form-label mt-2">Add New Media</label>
+                <input class="form-control" type="file" id="mediaFile" (change)="onFileSelected($event)" accept="image/*,video/*" [disabled]="isUploading">
+                <div *ngIf="isUploading" class="d-flex align-items-center mt-2">
+                  <div class="spinner-border spinner-border-sm me-2" role="status">
+                    <span class="visually-hidden">Uploading...</span>
+                  </div>
+                  <span>Uploading...</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Actions: Save, Cancel, Delete buttons. -->
+            <div class="row mb-3">
+              <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary" [disabled]="isSubmitting || isUploading">
+                  <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  {{ isSubmitting ? 'Saving...' : 'Save Changes' }}
+                </button>
+                <a routerLink="/services" class="btn btn-secondary ms-2">Cancel</a>
+                <button type="button" (click)="deleteService()" class="btn btn-danger ms-2" [disabled]="isLoading$ | async">
+                  <span *ngIf="isLoading$ | async" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  Delete Service
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Not Found Template -->
+    <ng-template #notFound>
+      <div class="card-body">
+        <div class="alert alert-danger text-center mt-3" role="alert">
+          Service not found. It may have been deleted.
+        </div>
+        <div class="text-center">
+          <a routerLink="/services" class="btn btn-primary"><b><i class="bi bi-arrow-left"></i> Back to List</b></a>
+        </div>
+      </div>
+    </ng-template>
+  </section>
+</main>

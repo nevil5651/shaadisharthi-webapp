@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/css/styles.css';
+
+#toast-container.toast-top-right {
+  /* Default is 'top: 12px;'. We use calc() to add 1cm to it. */
+  top: calc(12px);
+}

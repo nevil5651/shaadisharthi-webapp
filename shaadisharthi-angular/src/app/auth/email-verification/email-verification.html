@@ -1,0 +1,49 @@
+<!-- 
+  First step in provider registration: Enter email to receive verification link.
+  Simple, clean form with Bootstrap card.
+-->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card registration-card">
+        <div class="card-header py-3 registration-header">
+          <h4 class="mb-0 text-center">Verify Your Email</h4>
+        </div>
+        <div class="card-body p-4">
+          <p class="text-center small text-muted">Enter your email address to receive a verification link.</p>
+
+          <!-- Reactive form to capture email -->
+          <form [formGroup]="emailForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="mb-3">
+              <label for="email" class="form-label required-field">Email Address</label>
+              <input id="email" type="email" formControlName="email" class="form-control" placeholder="Enter your email">
+              <!-- Show validation errors when field is touched/dirty -->
+              <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="invalid-feedback d-block">
+                <small *ngIf="email?.errors?.['required']">Email is required.</small>
+                <small *ngIf="email?.errors?.['email']">Please enter a valid email address.</small>
+              </div>
+            </div>
+
+            <!-- Submit button with loading spinner -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="isSubmitting || emailForm.invalid">
+                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                {{ isSubmitting ? 'Sending...' : 'Verify Email' }}
+              </button>
+            </div>
+          </form>
+
+          <!-- Login link for existing users -->
+          <div class="text-center mt-4 text-muted">
+            <p>Already have an account? <a routerLink="/login" class="text-decoration-none">Sign in here</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center mt-4 text-muted">
+        <p class="small">© 2025 SaadiSarthi. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</div>

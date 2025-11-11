@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+                        http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	
+	
+	<!-- Admin AdminAuthClasses Servlet -->
+	<servlet>
+		<servlet-name>AdminAuthClasses</servlet-name>
+		<servlet-class>shaadisharthi.admin.AdminAuthServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminAuthClasses</servlet-name>
+		<url-pattern>/admin/admin-auth/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Admin ChangePassword Servlet -->
+	<servlet>
+		<servlet-name>AdminChangePassword</servlet-name>
+		<servlet-class>shaadisharthi.admin.ChangePasswordServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminChangePassword</servlet-name>
+		<url-pattern>/admin/changepassword</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Admin DashboardStatus Servlet -->
+	<servlet>
+		<servlet-name>DashboardStatus</servlet-name>
+		<servlet-class>shaadisharthi.admin.DashboardStats</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DashboardStatus</servlet-name>
+		<url-pattern>/admin/dashboardstats</url-pattern>
+	</servlet-mapping>
+	
+	<!-- User Trands Servlet Servlet  -->
+<servlet>
+<servlet-name>UserTrendsServlet</servlet-name>
+<servlet-class>shaadisharthi.admin.UserTrendsServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>UserTrendsServlet</servlet-name>
+<url-pattern>/admin/usertrends</url-pattern>
+</servlet-mapping>
+<!-- OrderComparisonServlet Servlet  -->
+<servlet>
+<servlet-name>OrderComparisonServlet</servlet-name>
+<servlet-class>shaadisharthi.admin.OrderComparisonServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>OrderComparisonServlet</servlet-name>
+<url-pattern>/admin/ordercomparison </url-pattern>
+</servlet-mapping>
+
+	<!--Admin Account Servlet -->
+
+	<servlet>
+		<servlet-name>AdminAccount</servlet-name>
+		<servlet-class>shaadisharthi.admin.Account</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminAccount</servlet-name>
+		<url-pattern>/admin/account</url-pattern>
+	</servlet-mapping>
+	
+	<!--Admin Usermanagement combined Servlet -->
+
+	<servlet>
+		<servlet-name>Customers</servlet-name>
+		<servlet-class>shaadisharthi.admin.CustomerServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Customers</servlet-name>
+		<url-pattern>/admin/customers/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ServiceProviders</servlet-name>
+		<servlet-class>shaadisharthi.admin.ServiceProviderServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ServiceProviders</servlet-name>
+		<url-pattern>/admin/service-providers/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ServiceProvidersStatusUpdate</servlet-name>
+		<servlet-class>shaadisharthi.admin.ServiceProviderStatusServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ServiceProvidersStatusUpdate</servlet-name>
+		<url-pattern>/admin/update-status</url-pattern>
+	</servlet-mapping>
+	
+	
+		<!--Admin QueryHandling Servlet -->
+	
+	<servlet>
+		<servlet-name>QueryHandler</servlet-name>
+		<servlet-class>shaadisharthi.admin.QueryHandlerServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>QueryHandler</servlet-name>
+		<url-pattern>/admin/queries/*</url-pattern>
+	</servlet-mapping>
+	
+	<!--Admin GuestQueryHandling Servlet -->
+	
+	<servlet>
+		<servlet-name>GuestQueryHandler</servlet-name>
+		<servlet-class>shaadisharthi.admin.GuestQueryHandlerServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GuestQueryHandler</servlet-name>
+		<url-pattern>/admin/GuestQueryHandler/*</url-pattern>
+	</servlet-mapping>
+	
+
+	<!-- ServiceProvider Register Servlet -->
+	<servlet>
+		<servlet-name>ServiceProviderRegister</servlet-name>
+		<servlet-class>shaadisharthi.Register</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ServiceProviderRegister</servlet-name>
+		<url-pattern>/ServiceProvider/register</url-pattern>
+	</servlet-mapping>
+
+	<!-- ServiceProvider Login Servlet -->
+	<servlet>
+		<servlet-name>ServiceProviderLogin</servlet-name>
+		<servlet-class>shaadisharthi.Login</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ServiceProviderLogin</servlet-name>
+		<url-pattern>/ServiceProvider/login</url-pattern>
+	</servlet-mapping>
+	
+	<!--  ServiceProvider Dashboard Servlet  -->
+<servlet>
+<servlet-name>providerdashboardstats</servlet-name>
+<servlet-class>shaadisharthi.DashboardStats</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>providerdashboardstats</servlet-name>
+<url-pattern>/ServiceProvider/providerdashboardstats</url-pattern>
+</servlet-mapping>
+	
+	<!-- ServiceProvider Login Servlet -->
+	<servlet>
+		<servlet-name>ProviderForgotPassword</servlet-name>
+		<servlet-class>shaadisharthi.utils.ForgotPassword</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ProviderForgotPassword</servlet-name>
+		<url-pattern>/ServiceProvider/forgot-password</url-pattern>
+	</servlet-mapping>
+	
+	<!-- ServiceProvider RESET PASSWORD Servlet -->
+	<servlet>
+		<servlet-name>ProviderResetPassword</servlet-name>
+		<servlet-class>shaadisharthi.utils.ResetPassword</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ProviderResetPassword</servlet-name>
+		<url-pattern>/ServiceProvider/reset-password</url-pattern>
+	</servlet-mapping>
+	
+	<!-- ServiceProvider EmailVerification Servlet -->
+	<servlet>
+		<servlet-name>ProviderEmailGeneration</servlet-name>
+		<servlet-class>shaadisharthi.EmailVerificationServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ProviderEmailGeneration</servlet-name>
+		<url-pattern>/ServiceProvider/verify-email</url-pattern>
+	</servlet-mapping>
+	
+	<!-- ServiceProvider EmailVerification Second Servlet -->
+	<servlet>
+		<servlet-name>ProviderEmailVerification</servlet-name>
+		<servlet-class>shaadisharthi.VerifyEmailServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ProviderEmailVerification</servlet-name>
+		<url-pattern>/ServiceProvider/email-verification</url-pattern>
+	</servlet-mapping>
+
+	<!--ServiceProvider Business Register Servlet -->
+
+	<servlet>
+		<servlet-name>BusinessRegister</servlet-name>
+		<servlet-class>shaadisharthi.BusinessRegister</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BusinessRegister</servlet-name>
+		<url-pattern>/ServiceProvider/business-register</url-pattern>
+	</servlet-mapping>
+	
+	<!--ServiceProvider Change Password Servlet -->
+
+	<servlet>
+		<servlet-name>ServiceProviderChangePassword</servlet-name>
+		<servlet-class>shaadisharthi.ProviderChangePassword</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ServiceProviderChangePassword</servlet-name>
+		<url-pattern>/ServiceProvider/provider-change-password</url-pattern>
+	</servlet-mapping>
+
+	<!-- Service List Servlet -->
+	<servlet>
+		<servlet-name>ServiceList</servlet-name>
+		<servlet-class>shaadisharthi.ServiceList</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServiceList</servlet-name>
+		<url-pattern>/ServiceProvider/providerservices</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Service BookingListServlet  -->
+	<servlet>
+		<servlet-name>BookingListServlet</servlet-name>
+		<servlet-class>shaadisarthi.booking.BookingListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookingListServlet</servlet-name>
+		<url-pattern>/ServiceProvider/booking-list-servlet/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Service BookingActionServlet  -->
+	<servlet>
+		<servlet-name>BookingActionServlet</servlet-name>
+		<servlet-class>shaadisarthi.booking.BookingActionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BookingActionServlet</servlet-name>
+		<url-pattern>/ServiceProvider/booking-action/*</url-pattern>
+	</servlet-mapping>
+
+	
+	<!-- Media CloudinarySignatureServlet Servlet -->
+	<servlet>
+		<servlet-name>CloudinarySignatureServlet</servlet-name>
+		<servlet-class>shaadisharthi.CloudinarySignature</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CloudinarySignatureServlet</servlet-name>
+		<url-pattern>/ServiceProvider/cloudinarysignature</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Create Service Servlet -->
+	<servlet>
+		<servlet-name>CreateService</servlet-name>
+		<servlet-class>shaadisharthi.ServiceCreate</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CreateService</servlet-name>
+		<url-pattern>/ServiceProvider/createservice</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- Edit Service Servlet -->
+	<servlet>
+		<servlet-name>EditService</servlet-name>
+		<servlet-class>shaadisharthi.EditService</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditService</servlet-name>
+		<url-pattern>/ServiceProvider/editservice/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Delete Service Servlet -->
+	<servlet>
+		<servlet-name>DeleteService</servlet-name>
+		<servlet-class>shaadisharthi.DeleteService</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>DeleteService</servlet-name>
+		<url-pattern>/ServiceProvider/deleteservice/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- LogOut Service Servlet -->
+	<servlet>
+		<servlet-name>Logout</servlet-name>
+		<servlet-class>shaadisharthi.Logout</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Logout</servlet-name>
+		<url-pattern>/ServiceProvider/logout</url-pattern>
+	</servlet-mapping>
+	
+	<!-- LogOut admin Servlet -->
+	<servlet>
+		<servlet-name>AdminLogout</servlet-name>
+		<servlet-class>shaadisharthi.admin.LogoutAdmin</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdminLogout</servlet-name>
+		<url-pattern>/admin/adminlogout</url-pattern>
+	</servlet-mapping>
+
+
+	<!--ServiceProvider Account Servlet -->
+
+	<servlet>
+		<servlet-name>Account</servlet-name>
+		<servlet-class>shaadisharthi.Account</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Account</servlet-name>
+		<url-pattern>/ServiceProvider/account</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!--User queries Servlet -->
+
+	<servlet>
+		<servlet-name>UserQueries</servlet-name>
+		<servlet-class>shaadisharthi.AddSupportQuery</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UserQueries</servlet-name>
+		<url-pattern>/ServiceProvider/AddSupportQuery</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Customer Verify Email in Servlet -->
+	<servlet>
+		<servlet-name>EmailVerificationServlet</servlet-name>
+		<servlet-class>shaadisarthi.customer.EmailVerificationServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>EmailVerificationServlet</servlet-name>
+		<url-pattern>/Customer/cstmr-verify-email</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Customer  Email Verify in Servlet -->
+	<servlet>
+		<servlet-name>VerifyEmailServlet</servlet-name>
+		<servlet-class>shaadisarthi.customer.VerifyEmailServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>VerifyEmailServlet</servlet-name>
+		<url-pattern>/Customer/cstmr-email-verification</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Customer ForgotPasswordServlet -->
+	<servlet>
+		<servlet-name>CustomerForgotPasswordServlet</servlet-name>
+		<servlet-class>shaadisarthi.customer.ForgotPasswordServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CustomerForgotPasswordServlet</servlet-name>
+		<url-pattern>/Customer/cstmr-forgot-password</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Customer ResetPasswordServlet -->
+	<servlet>
+		<servlet-name>CustomerResetPasswordServlet</servlet-name>
+		<servlet-class>shaadisarthi.customer.ResetPasswordServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CustomerResetPasswordServlet</servlet-name>
+		<url-pattern>/Customer/cstmr-reset-password</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Customer Register Servlet -->
+	<servlet>
+		<servlet-name>CustomerRegistrationServlet</servlet-name>
+		<servlet-class>shaadisarthi.customer.CustomerRegistrationServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CustomerRegistrationServlet</servlet-name>
+		<url-pattern>/Customer/cstmr-rgt</url-pattern>
+	</servlet-mapping>
+
+	<!-- Customer Sign in Servlet -->
+	<servlet>
+		<servlet-name>CustomerLogin</servlet-name>
+		<servlet-class>shaadisarthi.customer.CustomerLogin</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CustomerLogin</servlet-name>
+		<url-pattern>/Customer/signin</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Guest Customer/Provider Contact Servlet -->
+	<servlet>
+		<servlet-name>GuestCustomerQuery</servlet-name>
+		<servlet-class>shaadisarthi.customer.AddGuestQuery</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GuestCustomerQuery</servlet-name>
+		<url-pattern>/Customer/AddGuestQuery</url-pattern>
+	</servlet-mapping>
+
+	<!-- Customer Account in Servlet -->
+	<servlet>
+		<servlet-name>CustomerAccount</servlet-name>
+		<servlet-class>shaadisarthi.customer.CustomerAccount</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CustomerAccount</servlet-name>
+		<url-pattern>/Customer/cstmr-acc/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Customer Service Servlet in Servlet -->
+	<servlet>
+        <servlet-name>ServiceServlet</servlet-name>
+        <servlet-class>shaadisarthi.customer.ServiceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServiceServlet</servlet-name>
+        <url-pattern>/Customer/services/*</url-pattern>
+    </servlet-mapping>
+    
+
+	<servlet>
+		<servlet-name>Service_Detail</servlet-name>
+		<servlet-class>shaadisarthi.customer.ServiceDetailServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Service_Detail</servlet-name>
+		<url-pattern>/Customer/service-detail/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- BookingService Servlet -->
+	<servlet>
+		<servlet-name>BookingService</servlet-name>
+		<servlet-class>shaadisarthi.booking.BookingServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BookingService</servlet-name>
+		<url-pattern>/Customer/process-bookings</url-pattern>
+	</servlet-mapping>
+	
+	<!-- CustomerBookings Servlet -->
+	<servlet>
+		<servlet-name>CustomerBookings</servlet-name>
+		<servlet-class>shaadisarthi.booking.CustomerBookingsServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CustomerBookings</servlet-name>
+		<url-pattern>/Customer/cstmr-bookings</url-pattern>
+	</servlet-mapping>
+	
+	<!-- CustomerBookingAction Servlet -->
+	<servlet>
+		<servlet-name>CustomerBookingAction</servlet-name>
+		<servlet-class>shaadisarthi.booking.CustomerBookingActionServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CustomerBookingAction</servlet-name>
+		<url-pattern>/Customer/cstmr-action/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- CustomerUpcomingBookingsServlet Servlet -->
+	<servlet>
+		<servlet-name>CustomerUpcomingBookings</servlet-name>
+		<servlet-class>shaadisarthi.booking.CustomerUpcomingBookingsServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CustomerUpcomingBookings</servlet-name>
+		<url-pattern>/Customer/cstmr-upcoming-bookings</url-pattern>
+	</servlet-mapping>
+
+
+	
+	<filter>
+    <filter-name>CORSFilter</filter-name>
+    <filter-class>shaadisharthi.filters.CORSFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>CORSFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<filter>
+    <filter-name>CustomerJWTFilter</filter-name>
+    <filter-class>shaadisharthi.security.CustomerJwtFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>CustomerJWTFilter</filter-name>
+    <url-pattern>/Customer/*</url-pattern>
+</filter-mapping>
+
+<filter>
+    <filter-name>GlobalRateLimitFilter</filter-name>
+    <filter-class>shaadisharthi.filters.RateLimitFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>GlobalRateLimitFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<filter>
+        <filter-name>JwtFilter</filter-name>
+        <filter-class>shaadisharthi.security.JwtFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>JwtFilter</filter-name>
+        <url-pattern>/admin/account</url-pattern>
+        <url-pattern>/admin/dashboardstats</url-pattern>
+        <url-pattern>/admin/changepassword</url-pattern>
+        <url-pattern>/admin/customers/*</url-pattern>
+        <url-pattern>/admin/service-providers/*</url-pattern>
+        <url-pattern>/admin/queries/*</url-pattern>
+    </filter-mapping>
+
+</web-app>

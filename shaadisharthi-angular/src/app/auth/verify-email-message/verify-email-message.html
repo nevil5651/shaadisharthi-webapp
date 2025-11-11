@@ -1,0 +1,39 @@
+<!-- 
+  Success page after requesting verification email.
+  Shows email, allows resend, and gives instructions.
+-->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card registration-card">
+        <div class="card-header py-3 registration-header">
+          <h4 class="mb-0 text-center">Email Verification Sent</h4>
+        </div>
+        <div class="card-body p-4 text-center">
+          <p class="text-muted">A verification email has been sent to:</p>
+          <!-- Display the email (from URL or localStorage) -->
+          <p class="fw-bold">{{ email }}</p>
+          <p class="text-muted">
+            Please check your inbox (and spam folder) for a link to verify your email and continue registration. 
+            This link will expire in 15 minutes.
+          </p>
+
+          <!-- Resend button with loading state -->
+          <button class="btn btn-primary mt-3" (click)="resendEmail()" [disabled]="isResending">
+            <span *ngIf="isResending" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            {{ isResending ? 'Resending...' : 'Resend Email' }}
+          </button>
+
+          <p class="mt-3 text-muted small">
+            Didn’t receive it? <a routerLink="/email-verification">Try again</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center mt-4 text-muted">
+        <p class="small">© 2025 SaadiSarthi. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</div>

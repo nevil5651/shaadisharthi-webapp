@@ -1,0 +1,83 @@
+<!-- Main container for the page content -->
+<main id="main" class="main">
+  <!-- Page title and breadcrumb navigation -->
+  <div class="pagetitle">
+    <h1>Pending Bookings</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <!-- Current page is highlighted as active -->
+        <li class="breadcrumb-item active">Pending Bookings</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Main content section -->
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- Card wrapper for the bookings table -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Bookings List</h5>
+
+            <!-- Show spinner only when loading and no data yet -->
+            <div *ngIf="loading && !bookings.length" class="text-center py-4">
+              <mat-spinner diameter="40"></mat-spinner>
+            </div>
+
+            <!-- Virtual scroll container — renders only visible rows for performance -->
+            <cdk-virtual-scroll-viewport 
+              *ngIf="bookings.length" 
+              itemSize="50" 
+              class="viewport styled-viewport"
+              (scrolledIndexChange)="onScroll()">
+              
+              <!-- Bootstrap-styled table with DataTable classes -->
+              <table class="table datatable styled-table">
+                <thead>
+                  <tr>
+                    <th>Booking ID</th>
+                    <th>Customer</th>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Loop through each booking using virtual scroll -->
+                  <tr *cdkVirtualFor="let booking of bookings">
+                    <td>#{{booking.bookingId}}</td>
+                    <td>{{booking.customerName}}</td>
+                    <td>{{booking.serviceName}}</td>
+                    <!-- Format date to readable medium style (e.g., Jan 1, 2025) -->
+                    <td>{{booking.eventStartDate | date:'mediumDate'}}</td>
+                    <!-- Format price with currency symbol -->
+                    <td>{{booking.totalAmount | currency}}</td>
+                    <td>
+                      <!-- Action buttons grouped together -->
+                      <div class="btn-group">
+                        <button class="btn btn-success btn-sm" (click)="acceptBooking(booking.bookingId)">
+                          <i class="bi bi-check-circle"></i> Accept
+                        </button>
+                        <button class="btn btn-danger btn-sm" (click)="rejectBooking(booking.bookingId)">
+                          <i class="bi bi-x-circle"></i> Reject
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </cdk-virtual-scroll-viewport>
+
+            <!-- Show message when no bookings are found and not loading -->
+            <div *ngIf="!loading && !bookings.length" class="text-center py-4 text-muted">
+              No pending bookings found.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

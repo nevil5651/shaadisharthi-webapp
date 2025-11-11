@@ -1,0 +1,80 @@
+:root {
+  --toastify-gradient: linear-gradient(to right, #dd0276, #f69441);
+  --toastify-border-radius: 8px;
+}
+
+.Toastify__toast {
+  border-radius: var(--toastify-border-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.75rem;
+}
+
+.Toastify__toast-body {
+  padding: 12px 16px;
+}
+
+.Toastify__toast--success {
+  border-left: 4px solid #07bc0c;
+}
+
+.Toastify__toast--error {
+  border-left: 4px solid #e74c3c;
+}
+
+.Toastify__toast--warning {
+  border-left: 4px solid #f1c40f;
+}
+
+.Toastify__toast--info {
+  border-left: 4px solid #3498db;
+}
+
+.Toastify__progress-bar {
+  height: 3px;
+  background: var(--toastify-gradient);
+}
+
+.Toastify__close-button {
+  color: #6b7280;
+  align-self: center;
+  margin-right: 8px;
+}
+
+.Toastify__close-button:hover {
+  color: #374151;
+}
+
+/* Custom icon colors */
+.Toastify__toast-icon {
+  margin-right: 12px;
+}
+
+.Toastify__toast--success .Toastify__toast-icon svg {
+  fill: #07bc0c;
+}
+
+.Toastify__toast--error .Toastify__toast-icon svg {
+  fill: #e74c3c;
+}
+
+.Toastify__toast--warning .Toastify__toast-icon svg {
+  fill: #f1c40f;
+}
+
+.Toastify__toast--info .Toastify__toast-icon svg {
+  fill: #3498db;
+}
+
+/* Custom notification types with gradient background */
+.Toastify__toast--custom {
+  background: var(--toastify-gradient);
+  color: white;
+}
+
+.Toastify__toast--custom .Toastify__close-button {
+  color: white;
+}
+
+.Toastify__toast--custom .Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.5);
+}

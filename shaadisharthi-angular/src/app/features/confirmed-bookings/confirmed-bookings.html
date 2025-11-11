@@ -1,0 +1,82 @@
+<!-- Main layout for confirmed bookings page -->
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Confirmed Bookings</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Home</li>
+        <li class="breadcrumb-item active">Confirmed Bookings</li>
+      </ol>
+    </nav>
+  </div>
+
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Confirmed Bookings List</h5>
+
+            <!-- Initial loading spinner -->
+            <div *ngIf="loading && !bookings.length" class="text-center py-4">
+              <mat-spinner diameter="40"></mat-spinner>
+            </div>
+
+            <!-- Virtual scroll viewport for large lists -->
+            <cdk-virtual-scroll-viewport 
+              itemSize="50" 
+              class="viewport styled-viewport"
+              (scrolledIndexChange)="onScroll()">
+              
+              <table class="table datatable styled-table">
+                <thead>
+                  <tr>
+                    <th>Booking ID</th>
+                    <th>Customer</th>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Note: Using *ngFor here instead of *cdkVirtualFor (comment says for debugging) -->
+                  <tr *ngFor="let booking of bookings; trackBy: trackByBookingId">
+                    <td>#{{booking.bookingId}}</td>
+                    <td>{{booking.customerName}}</td>
+                    <td>{{booking.serviceName}}</td>
+                    <td>{{booking.eventStartDate | date:'mediumDate'}}</td>
+                    <td>{{booking.totalAmount | currency}}</td>
+                    <td>
+                      <div class="btn-group">
+                        <!-- Mark as done -->
+                        <button class="btn btn-success btn-sm" (click)="completeBooking(booking.bookingId)">
+                          <i class="bi bi-check-circle"></i> Complete
+                        </button>
+                        <!-- Cancel with reason -->
+                        <button class="btn btn-danger btn-sm" (click)="cancelBooking(booking.bookingId)">
+                          <i class="bi bi-x-circle"></i> Cancel
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </cdk-virtual-scroll-viewport>
+
+            <!-- Show small spinner when loading more items -->
+            <div *ngIf="loading && bookings.length" class="text-center py-2">
+              <mat-spinner diameter="30"></mat-spinner>
+              <p class="text-muted mt-2">Loading more bookings...</p>
+            </div>
+
+            <!-- Empty state when no confirmed bookings -->
+            <div *ngIf="!loading && !bookings.length" class="text-center py-4 text-muted">
+              No confirmed bookings found.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

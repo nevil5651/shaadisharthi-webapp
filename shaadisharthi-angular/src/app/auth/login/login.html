@@ -1,0 +1,92 @@
+<!-- login.html -->
+<main>
+  <!-- Main container for the whole login page -->
+  <div class="container">
+    <!-- Full-height section that centers the login card vertically -->
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <!-- Card width is limited to 4 columns on large screens, 6 on medium -->
+          <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+            <!-- Logo area – clicking the logo goes back to home -->
+            <div class="d-flex justify-content-center py-4">
+              <a routerLink="/" class="logo d-flex align-items-center w-auto">
+                <img src="assets/img/logo.png" alt="Company logo">
+              </a>
+            </div><!-- End Logo -->
+
+            <!-- Actual login card -->
+            <div class="card mb-3">
+              <div class="card-body">
+
+                <!-- Card header text -->
+                <div class="pt-4 pb-2">
+                  <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                  <p class="text-center small">Enter your username & password to login</p>
+                </div>
+
+                <!-- Reactive form bound to loginForm in the component -->
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="row g-3 needs-validation" novalidate>
+
+                  <!-- Email field -->
+                  <div class="col-12">
+                    <label for="yourEmail" class="form-label">Email</label>
+                    <!-- Two-way binding via formControlName, Bootstrap invalid styling -->
+                    <input type="email" formControlName="email" class="form-control" id="yourEmail" 
+                      [class.is-invalid]="email?.invalid && email?.touched">
+                    <!-- Validation messages shown only when field is touched and invalid -->
+                    <div *ngIf="email?.invalid && email?.touched" class="invalid-feedback">
+                      <div *ngIf="email?.errors?.['required']">Please enter your email.</div>
+                      <div *ngIf="email?.errors?.['email']">Please enter a valid email address.</div>
+                    </div>
+                  </div>
+
+                  <!-- Password field -->
+                  <div class="col-12">
+                    <label for="yourPassword" class="form-label">Password</label>
+                    <input type="password" formControlName="password" class="form-control" id="yourPassword"
+                      [class.is-invalid]="password?.invalid && password?.touched">
+                    <div *ngIf="password?.invalid && password?.touched" class="invalid-feedback">
+                      <div *ngIf="password?.errors?.['required']">Please enter your password.</div>
+                    </div>
+                  </div>
+
+                  <!-- Remember me + Forgot password row -->
+                  <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" formControlName="remember" id="rememberMe">
+                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                      </div>
+                      <a routerLink="/forgot-password" class="small">Forgot password?</a>
+                    </div>
+                  </div>
+
+                  <!-- Submit button – disabled while loading -->
+                  <div class="col-12">
+                    <button class="btn btn-primary w-100" type="submit" [disabled]="loading">
+                      <span *ngIf="!loading">Login</span>
+                      <!-- Spinner shown during API call -->
+                      <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    </button>
+                  </div>
+
+                  <!-- Sign-up link -->
+                  <div class="col-12">
+                    <p class="small mb-0">Don't have account? <a routerLink="/email-verification" class="text-decoration-none">Create an account</a></p>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <!-- Footer credit -->
+            <div class="credits">
+              Designed by <a href="https://shaadisharthi.theworkpc.com">Shaadisarthi</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>

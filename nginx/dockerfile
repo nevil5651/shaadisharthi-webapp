@@ -1,0 +1,33 @@
+# ------------------------
+# Build Admin (React)
+# ------------------------
+FROM node:20-alpine AS build-admin
+WORKDIR /app
+COPY shaadisharthi-react/package*.json ./
+RUN npm ci
+COPY shaadisharthi-react .
+RUN npm run build
+
+# ------------------------
+# Build Provider (Angular)
+# ------------------------
+FROM node:20-alpine AS build-provider
+WORKDIR /app
+COPY shaadisharthi-angular/package*.json ./
+RUN npm ci
+COPY shaadisharthi-angular .
+RUN npx ng build --configuration production
+
+# ------------------------
+# Serve with Nginx
+# ------------------------
+FROM nginx:stable-alpine
+COPY nginx/frontend.conf /etc/nginx/conf.d/default.conf
+
+# Copy built dist outputs
+COPY --from=build-admin /app/dist /usr/share/nginx/html/admin
+COPY --from=build-provider /app/dist/shaadisharthi-provider /usr/share/nginx/html/provider
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+

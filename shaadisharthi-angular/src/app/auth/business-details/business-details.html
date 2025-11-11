@@ -1,0 +1,162 @@
+<!-- 
+  This page collects detailed business information from a provider after they register/login.
+  It's part of the onboarding flow. Uses Bootstrap for responsive layout.
+-->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <!-- Main registration card for business details -->
+      <div class="card registration-card">
+        <div class="card-header py-3 registration-header">
+          <h4 class="mb-0 text-center">Business Information</h4>
+        </div>
+        <div class="card-body p-4">
+          <p class="text-center small text-muted">Complete your business profile to start receiving customers</p>
+
+          <!-- Reactive form bound to businessRegisterForm -->
+          <form [formGroup]="businessRegisterForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+
+            <!-- SECTION 1: Basic Business Details -->
+            <h5 class="section-title mb-4">Basic Business Details</h5>
+            <div class="row g-3 mb-4">
+
+              <!-- Business Name -->
+              <div class="col-md-12">
+                <label for="businessName" class="form-label required-field">Business Name</label>
+                <input id="businessName" type="text" formControlName="businessName" class="form-control" placeholder="Enter your business name">
+                <div *ngIf="businessName?.invalid && (businessName?.dirty || businessName?.touched)" class="invalid-feedback d-block">
+                  <small *ngIf="businessName?.errors?.['required']">Please enter your business name</small>
+                </div>
+              </div>
+
+              <!-- Phone Number (Required) -->
+              <div class="col-md-6">
+                <label for="phone" class="form-label required-field">Phone Number</label>
+                <input id="phone" type="tel" formControlName="phone" class="form-control" placeholder="Enter your 10-digit phone number">
+                <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)" class="invalid-feedback d-block">
+                  <small *ngIf="phone?.errors?.['required']">Phone number is required.</small>
+                  <small *ngIf="phone?.errors?.['pattern']">Please enter a valid 10-digit phone number.</small>
+                </div>
+              </div>
+
+              <!-- Alternate Phone (Optional but validated if entered) -->
+              <div class="col-md-6">
+                <label for="alternatePhone" class="form-label">Alternate Phone Number</label>
+                <input id="alternatePhone" type="tel" formControlName="alternatePhone" class="form-control" placeholder="Enter alternate phone number">
+                <div *ngIf="alternatePhone?.invalid && (alternatePhone?.dirty || alternatePhone?.touched)" class="invalid-feedback d-block">
+                  <small *ngIf="alternatePhone?.errors?.['pattern']">Please enter a valid 10-digit phone number.</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 2: Business Address -->
+            <h5 class="section-title mb-4">Business Address</h5>
+            <div class="row g-3 mb-4">
+              <div class="col-12">
+                <label for="address" class="form-label required-field">Full Address</label>
+                <input id="address" type="text" formControlName="address" class="form-control" placeholder="Enter your business address">
+                <div *ngIf="address?.invalid && (address?.dirty || address?.touched)" class="invalid-feedback d-block">
+                  <small *ngIf="address?.errors?.['required']">Please enter your business address</small>
+                </div>
+              </div>
+
+              <!-- State Dropdown -->
+              <div class="col-md-6">
+                <label class="form-label required-field">State</label>
+                <select class="form-select" formControlName="state">
+                  <option value="" disabled selected hidden>Select your state</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                </select>
+                <div *ngIf="state?.invalid && (state?.dirty || state?.touched)" class="invalid-feedback d-block">
+                  <small *ngIf="state?.errors?.['required']">Please select your state</small>
+                </div>
+              </div>
+
+              <!-- City Dropdown -->
+              <div class="col-md-6">
+                <label class="form-label required-field">City</label>
+                <select class="form-select" formControlName="city">
+                  <option value="" disabled selected hidden>Select your city</option>
+                  <option value="Rajkot">Rajkot</option>
+                  <option value="Jamnagar">Jamnagar</option>
+                  <option value="Vadodara">Vadodara</option>
+                </select>
+                <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="invalid-feedback d-block">
+                  <small *ngIf="city?.errors?.['required']">Please select your city</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- SECTION 3: Legal Documents -->
+            <h5 class="section-title mb-4">Legal Documents</h5>
+            <div class="row g-3 mb-4">
+
+              <!-- Aadhaar Number -->
+              <div class="col-md-6">
+                <label for="aadhar" class="form-label required-field">Aadhaar Number</label>
+                <input id="aadhar" type="text" formControlName="aadhar" class="form-control" placeholder="Enter 12-digit Aadhaar number">
+                <div *ngIf="aadhar?.invalid && (aadhar?.dirty || aadhar?.touched)" class="invalid-feedback d-block">
+                  <small *ngIf="aadhar?.errors?.['required']">Aadhaar number is required.</small>
+                  <small *ngIf="aadhar?.errors?.['pattern']">Please enter a valid 12-digit Aadhaar number.</small>
+                </div>
+              </div>
+
+              <!-- GST Number (Optional) -->
+              <div class="col-md-6">
+                <label for="gstNo" class="form-label">GST Number (if applicable)</label>
+                <input id="gstNo" type="text" formControlName="gstNo" class="form-control" placeholder="Enter GST number">
+                <div *ngIf="gstNo?.invalid && (gstNo?.dirty || gstNo?.touched)" class="invalid-feedback d-block">
+                  <small *ngIf="gstNo?.errors?.['pattern']">Please enter a valid GST number.</small>
+                </div>
+              </div>
+
+              <!-- PAN Number -->
+              <div class="col-12">
+                <label for="pan" class="form-label required-field">Permanent Account Number (PAN)</label>
+                <input id="pan" type="text" formControlName="pan" class="form-control" placeholder="Enter PAN number">
+                <div *ngIf="pan?.invalid && (pan?.dirty || pan?.touched)" class="invalid-feedback d-block">
+                  <small *ngIf="pan?.errors?.['required']">Please enter PAN number</small>
+                  <small *ngIf="pan?.errors?.['pattern']">Please enter a valid PAN number (e.g., ABCDE1234F).</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Terms & Conditions Checkbox -->
+            <div class="mb-4">
+              <div class="form-check">
+                <input id="acceptTerms" type="checkbox" formControlName="terms" class="form-check-input">
+                <label class="form-check-label" for="acceptTerms">
+                  I agree to the <a href="#" class="text-decoration-none">terms and conditions</a>
+                </label>
+                <div *ngIf="terms?.invalid && (terms?.dirty || terms?.touched)" class="invalid-feedback d-block">
+                  <small>You must agree before submitting.</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button with Loading State -->
+            <div class="d-grid">
+              <button class="btn btn-primary btn-lg" type="submit" [disabled]="isSubmitting || businessRegisterForm.invalid">
+                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                <i class="bi bi-check-circle-fill me-2" *ngIf="!isSubmitting"></i>
+                {{ isSubmitting ? 'Submitting...' : 'Complete Registration' }}
+              </button>
+            </div>
+          </form>
+
+          <!-- Login Link -->
+          <div class="text-center mt-4 text-muted">
+            <p>Already have an account? <a routerLink="/login" class="text-decoration-none">Sign in here</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="text-center mt-4 text-muted">
+        <p class="small">© 2025 SaadiSarthi. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</div>

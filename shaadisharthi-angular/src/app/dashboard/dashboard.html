@@ -1,0 +1,308 @@
+<!-- 
+  Main content area for the Dashboard page.
+  Includes page title, breadcrumb navigation, and various cards/charts for metrics.
+-->
+<main id="main" class="main">
+  <!-- Page header with title and breadcrumb -->
+  <div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.jsp">Home</a></li>  <!-- Link to home (note: .jsp might be a typo or legacy) -->
+        <li class="breadcrumb-item active">Dashboard</li>             <!-- Current page -->
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <!-- Dashboard section with cards and charts -->
+  <section class="section dashboard">
+    <!-- Filter Controls (currently commented out, but ready for month/year filtering) -->
+    <!-- <div class="row mb-3">
+      <div class="col-md-6">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-outline-primary" 
+                  [class.active]="selectedMonthFilter === 'thisMonth'" 
+                  (click)="selectedMonthFilter = 'thisMonth'; onFilterChange()">
+            This Month
+          </button>
+          <button type="button" class="btn btn-outline-primary" 
+                  [class.active]="selectedMonthFilter === 'thisMonth'" 
+                  (click)="selectedMonthFilter = 'lastMonth'; onFilterChange()">
+            Last Month
+          </button>
+        </div>
+      </div>
+      <div class="col-md-6 text-end">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-outline-primary" 
+                  [class.active]="selectedYearFilter === 'thisYear'" 
+                  (click)="selectedYearFilter = 'thisYear'; onFilterChange()">
+            This Year
+          </button>
+          <button type="button" class="btn btn-outline-primary" 
+                  [class.active]="selectedYearFilter === 'lastYear'" 
+                  (click)="selectedYearFilter = 'lastYear'; onFilterChange()">
+            Last Year
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Row for metric cards and charts -->
+    <div class="row">
+      <!-- Upcoming Orders Card -->
+      <div class="col-12 col-md-6 col-lg-4">  <!-- Responsive column -->
+        <div class="card info-card sales-card">
+          <div class="card-body">
+            <h5 class="card-title">Upcoming orders</h5>
+            <div class="d-flex align-items-center">
+              <!-- Icon circle -->
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-cart"></i>  <!-- Bootstrap cart icon -->
+              </div>
+              <!-- Metric display -->
+              <div class="ps-4">
+                <h6>{{upcomingOrders}}</h6>  <!-- Dynamic value from .ts -->
+                <span class="text-success small pt-1 fw-bold">12%</span>  <!-- Hardcoded increase (update dynamically if needed) -->
+                <span class="text-muted small pt-2 ps-1">increase</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Order Card -->
+
+      <!-- Total Orders This Month Card -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card info-card sales-card">
+          <!-- Filter dropdown (commented out) -->
+          <!-- <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li class="dropdown-header text-start">
+                <h6>Filter</h6>
+              </li>
+              <li><a class="dropdown-item" href="#">This Month</a></li>
+              <li><a class="dropdown-item" href="#">This Year</a></li>
+            </ul>
+          </div> -->
+
+          <div class="card-body">
+            <h5 class="card-title">
+              Total Orders <span>| This Month</span>  <!-- Title with time period -->
+            </h5>
+            <div class="d-flex align-items-center">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-cart"></i>
+              </div>
+              <div class="ps-3">  <!-- Slight padding adjustment -->
+                <h6>{{totalOrdersThisMonth}}</h6>  <!-- Dynamic value -->
+                <span class="text-success small pt-1 fw-bold">12%</span> 
+                <span class="text-muted small pt-2 ps-1">increase</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End Order This year Card -->
+
+      <!-- Revenue Card -->
+      <!-- <div class="col-12 col-md-6 col-lg-4">
+        <div class="card info-card revenue-card">
+          <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li class="dropdown-header text-start">
+                <h6>Filter</h6>
+              </li>
+              <li><a class="dropdown-item" href="#">This Month</a></li>
+              <li><a class="dropdown-item" href="#">This Year</a></li>
+            </ul>
+          </div>
+
+          <div class="card-body">
+            <h5 class="card-title">
+              Revenue <span>| This Month</span>
+            </h5>
+            <div class="d-flex align-items-center">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-currency-dollar"></i>
+              </div>
+              <div class="ps-3">
+                <h6>${{revenueThisMonth | number:'1.2-2'}}</h6>
+                <span class="text-success small pt-1 fw-bold">8%</span> 
+                <span class="text-muted small pt-2 ps-1">increase</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- End Revenue Card -->
+
+      <!-- Customers Card -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card info-card customers-card">
+          <!-- <div class="filter">
+            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <li class="dropdown-header text-start">
+                <h6>Filter</h6>
+              </li>
+              <li><a class="dropdown-item" href="#">This Month</a></li>
+              <li><a class="dropdown-item" href="#">This Year</a></li>
+            </ul>
+          </div> -->
+
+          <div class="card-body">
+            <h5 class="card-title">
+              Customers <span>| This Year</span>
+            </h5>
+            <div class="d-flex align-items-center">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-people"></i>
+              </div>
+              <div class="ps-3">
+                <h6>{{customersThisYear}}</h6>
+                <span class="text-danger small pt-1 fw-bold">12%</span> 
+                <span class="text-muted small pt-2 ps-1">decrease</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Customers Card -->
+
+      <!-- Wallet balance Card -->
+      <!-- <div class="col-12 col-md-6 col-lg-4">
+        <div class="card info-card sales-card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <strong>Wallet Balance</strong>
+            </h5>
+            <div class="d-flex align-items-center">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-currency-dollar"></i>
+              </div>
+              <div class="ps-3">
+                <h6>
+                  <strong>{{walletBalance | currency}}</strong>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- End wallet balance Card -->
+
+      <!-- Total earnings Card -->
+      <!-- <div class="col-12 col-md-6 col-lg-4">
+        <div class="card info-card revenue-card">
+          <div class="card-body">
+            <h5 class="card-title">Total Earnings this year</h5>
+            <div class="d-flex align-items-center">
+              <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                <i class="bi bi-currency-dollar"></i>
+              </div>
+              <div class="ps-3">
+                <h6>{{totalEarnings | currency}}</h6>
+                <span class="text-success small pt-1 fw-bold">8%</span> 
+                <span class="text-muted small pt-2 ps-1">increase</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- End Total earnings Card -->
+
+      <!-- Booking Analysis Chart -->    
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Booking Analysis</h5>
+            <!-- Container for ApexCharts -->
+            <div id="booking-analysis-chart">
+              <!-- ApexCharts component with bound options -->
+              <apx-chart 
+                [series]="bookingAnalysisChart.series" 
+                [chart]="bookingAnalysisChart.chart" 
+                [labels]="bookingAnalysisChart.labels"
+                [colors]="bookingAnalysisChart.colors"
+                [responsive]="bookingAnalysisChart.responsive">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Booking Analysis Chart -->
+
+      <!-- Performance and Rating Chart (Bar chart) -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Performance and Rating</h5>
+            <div id="performance-rating-chart">
+              <apx-chart 
+                [series]="performanceRatingChart.series" 
+                [chart]="performanceRatingChart.chart" 
+                [plotOptions]="performanceRatingChart.plotOptions"
+                [dataLabels]="performanceRatingChart.dataLabels"
+                [xaxis]="performanceRatingChart.xaxis"
+                [yaxis]="performanceRatingChart.yaxis"
+                [title]="performanceRatingChart.title">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Performance and Rating Chart -->
+
+      <!-- Booking Calendar Chart (Line chart) -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Booking Calendar</h5>
+            <div id="booking-calendar-chart">
+              <apx-chart 
+                [series]="bookingCalendarChart.series" 
+                [chart]="bookingCalendarChart.chart" 
+                [dataLabels]="bookingCalendarChart.dataLabels"
+                [stroke]="bookingCalendarChart.stroke"
+                [title]="bookingCalendarChart.title"
+                [grid]="bookingCalendarChart.grid"
+                [xaxis]="bookingCalendarChart.xaxis">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Booking Calendar Chart -->
+
+      <!-- Financial Overview Chart (Area chart) -->
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Financial Overview</h5>
+            <div id="financial-chart">
+              <apx-chart 
+                [series]="financialChart.series" 
+                [chart]="financialChart.chart" 
+                [dataLabels]="financialChart.dataLabels"
+                [stroke]="financialChart.stroke"
+                [subtitle]="financialChart.subtitle"
+                [labels]="financialChart.labels"
+                [xaxis]="financialChart.xaxis"
+                [yaxis]="financialChart.yaxis"
+                [legend]="financialChart.legend"
+                [tooltip]="financialChart.tooltip">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Financial Chart -->
+    </div>
+  </section>
+</main>

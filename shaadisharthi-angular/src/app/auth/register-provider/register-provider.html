@@ -1,0 +1,109 @@
+<!-- 
+  This is the registration form for a provider (user) who has already verified their email via a token.
+  It's a clean, responsive Bootstrap-styled form inside a card.
+  The form uses Angular Reactive Forms with real-time validation feedback.
+-->
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6">
+      <!-- Main registration card -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="pt-4 pb-2">
+            <!-- Page title and subtitle -->
+            <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+            <p class="text-center small">Enter your details to complete registration</p>
+          </div>
+
+          <!-- 
+            Reactive form bound to registerForm in the component.
+            Submits via onSubmit() when valid.
+            novalidate disables browser default validation (we use Angular's).
+          -->
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="row g-3" novalidate>
+
+            <!-- Name Field -->
+            <div class="col-12">
+              <label for="yourName" class="form-label required-field">Your Name</label>
+              <!-- Two-way bound to form control 'name' -->
+              <input id="yourName" type="text" formControlName="name" class="form-control" placeholder="Enter your name">
+              <!-- Show error only if field is touched/dirty and invalid -->
+              <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="invalid-feedback d-block">
+                <small *ngIf="name?.errors?.['required']">Please, enter your name!</small>
+              </div>
+            </div>
+
+            <!-- Email Field (Pre-filled & Readonly) -->
+            <div class="col-12">
+              <label for="yourEmail" class="form-label required-field">Your Email</label>
+              <!-- Email comes from token verification, so it's readonly -->
+              <input id="yourEmail" type="email" formControlName="email" class="form-control" placeholder="Enter your email" readonly>
+              <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="invalid-feedback d-block">
+                <small *ngIf="email?.errors?.['required']">Email is required.</small>
+                <small *ngIf="email?.errors?.['email']">Please enter a valid email address.</small>
+              </div>
+            </div>
+
+            <!-- Password Field with Strong Rules -->
+            <div class="col-12">
+              <label for="yourPassword" class="form-label required-field">Password</label>
+              <input id="yourPassword" type="password" formControlName="password" class="form-control" placeholder="Create a password">
+              <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="invalid-feedback d-block">
+                <small *ngIf="password?.errors?.['required']">Password is required.</small>
+                <small *ngIf="password?.errors?.['minlength']">Password must be at least 8 characters long.</small>
+                <!-- Pattern ensures: uppercase, lowercase, number, special char -->
+                <small *ngIf="password?.errors?.['pattern']">Password must contain uppercase, lowercase, number, and a special character.</small>
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="col-12">
+              <label for="confirmPassword" class="form-label required-field">Confirm Password</label>
+              <input id="confirmPassword" type="password" formControlName="confirmPassword" class="form-control" placeholder="Confirm your password">
+              <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)" class="invalid-feedback d-block">
+                <small *ngIf="confirmPassword?.errors?.['required']">Confirming your password is required.</small>
+              </div>
+              <!-- Cross-field validation: checks if passwords match -->
+              <div *ngIf="registerForm.errors?.['mismatch'] && confirmPassword?.touched" class="invalid-feedback d-block">
+                <small>Passwords do not match.</small>
+              </div>
+            </div>
+
+            <!-- Terms & Conditions Checkbox -->
+            <div class="col-12">
+              <div class="form-check">
+                <input id="acceptTerms" type="checkbox" formControlName="terms" class="form-check-input">
+                <label class="form-check-label" for="acceptTerms">
+                  I agree to the <a href="#" class="text-decoration-none">terms and conditions</a>
+                </label>
+                <div *ngIf="terms?.invalid && (terms?.dirty || terms?.touched)" class="invalid-feedback d-block">
+                  <small>You must agree before submitting.</small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button with Loading State -->
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary w-100" [disabled]="isSubmitting || registerForm.invalid">
+                <!-- Show spinner when submitting -->
+                <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                {{ isSubmitting ? 'Registering...' : 'Create Account' }}
+              </button>
+            </div>
+          </form>
+
+          <!-- Login Link for Existing Users -->
+          <div class="text-center mt-4 text-muted">
+            <p>Already have an account? <a routerLink="/login" class="text-decoration-none">Sign in here</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Copyright -->
+      <div class="text-center mt-4 text-muted">
+        <p class="small">© 2025 SaadiSarthi. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</div>

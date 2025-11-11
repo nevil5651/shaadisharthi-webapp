@@ -1,0 +1,86 @@
+*.env
+*.env.*
+shaadisharthi-backend/docker/.env
+shaadisharthi-next/.env
+shaadisharthi-react/.env
+shaadisharthi-angular/.env
+environment.ts
+shaadisharthi-angular/src/environments/
+*.pem
+*.crt
+*.key
+
+# Node / Next.js
+node_modules/
+.next/
+dist/
+build/
+
+# Angular
+angular/dist/
+angular/node_modules/
+shaadisharthi-angular/.angular
+shaadisharthi-frontend/provider/
+# React + Vite
+react/node_modules/
+react/dist/
+
+# Java / Eclipse
+*.class
+*.war
+*.jar
+bin/
+target/
+
+# Docker
+docker-images/
+*.log
+
+# Next.js
+.next/
+
+# ---------------------------
+# Node / frontend
+# ---------------------------
+node_modules/
+shaadisharthi-angular/provider
+dist/
+build/
+.next/                     # Next.js build cache
+.shaadisharthi-angular/provider
+.angular/cache/
+
+# ---------------------------
+# Java / backend
+# ---------------------------
+target/
+*.war
+*.jar
+*.class
+
+# ---------------------------
+# Docker / runtime / logs
+# ---------------------------
+*.log
+*.pid
+*.sock
+certbot/conf/
+certbot/www/
+
+# ---------------------------
+# Database
+# ---------------------------
+*.sql
+*.db
+
+# ---------------------------
+# IDE / editor / OS junk
+# ---------------------------
+*.swp
+*.swo
+*.bak
+*.tmp
+*.DS_Store
+Thumbs.db
+.idea/
+.vscode/

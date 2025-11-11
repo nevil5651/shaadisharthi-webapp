@@ -1,0 +1,98 @@
+name: project
+
+services:
+  mysql:
+    container_name: shaadi_mysql
+    image: mysql:8.0
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    env_file:
+      - ./.env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./shaadisharthi-backend/docker/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  shaadisharthi-backend:
+    build:
+      context: .
+      dockerfile: shaadisharthi-backend/docker/Dockerfile
+    container_name: shaadisharthi-backend
+    image: shaadisharthi-backend:latest
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./.env
+    environment:
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+      JWT_RESET_SECRET_KEY: ${JWT_RESET_SECRET_KEY}
+      ADMIN_ALLOWED_ORIGINS: ${ADMIN_ALLOWED_ORIGINS}
+      SERVICEPROVIDER_ALLOWED_ORIGINS: ${SERVICEPROVIDER_ALLOWED_ORIGINS}
+      CUSTOMER_ALLOWED_ORIGINS: ${CUSTOMER_ALLOWED_ORIGINS}
+
+  shaadisharthi-next:
+    build:
+      context: ./shaadisharthi-next
+      dockerfile: Dockerfile
+    image: shaadisharthi-next:latest
+    container_name: shaadisharthi-next
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./.env
+    environment:
+      NODE_ENV: production
+    depends_on:
+      shaadisharthi-backend:
+        condition: service_started
+
+
+  frontend_nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    image: nginx:alpine
+    container_name: frontend_nginx
+    volumes:
+      - ./nginx/frontend.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./certbot/www:/var/www/certbot
+      - ./certbot/conf:/etc/letsencrypt
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      shaadisharthi-backend:
+        condition: service_started
+      shaadisharthi-next:
+        condition: service_started
+    restart: unless-stopped
+
+
+networks:
+  default:
+    name: project_default
+
+volumes:
+  backend_logs:
+    name: project_backend_logs
+  mysql_data:
+    name: project_mysql_data
+
