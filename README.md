@@ -113,6 +113,9 @@ JWT_RESET_SECRET_KEY=create_a_long_key
 EMAIL_FROM=email
 EMAIL_PASSWORD=app_password_of_16_alphabets_like_abcd_efgh_ijkl_mnop
 
+# Base App Url
+APP_BASE_URL=http://localhost
+
 # Cloudinary
 CLOUDINARY_CLOUD_NAME=cloud_name
 CLOUDINARY_API_KEY=cloud_api_key
