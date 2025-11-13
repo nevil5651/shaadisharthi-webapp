@@ -20,6 +20,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +32,7 @@ import org.slf4j.LoggerFactory;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import shaadisharthi.DbConnection.DbConnection;
+
 import shaadisharthi.utils.ConfigUtil;
 
 /**
@@ -57,6 +59,7 @@ public class EmailVerificationServlet extends HttpServlet {
     
     // Rate limiting: maximum 5 attempts per hour per email
     private static final int MAX_ATTEMPTS_PER_HOUR = 5;
+    private static final String APP_BASE_URL = ConfigUtil.get("app.base.url", "APP_BASE_URL");
 
     // Static initialization for configuration loading
     static {
@@ -273,7 +276,13 @@ public class EmailVerificationServlet extends HttpServlet {
 
                 // Prepare email content
                 String subject = "ShaadiSarthi Email Verification";
-                String link = "https://shaadisharthi.theworkpc.com/provider/register?token=" + token;
+                if (APP_BASE_URL == null) {
+                    logger.error("Application base URL is not configured. Please set app.base.url or APP_BASE_URL.");
+                    responseJson.put("error", "Server configuration error");
+                    sendResponse(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, responseJson);
+                    return;
+                }
+                String link = APP_BASE_URL + "/provider/register?token=" + token;
                 String body = "Dear User,\n\nClick the following link to verify your email and complete registration:\n" + link
                         + "\n\nThis link expires in 15 minutes.\n\nBest regards,\nShaadiSarthi Team";
 

@@ -47,6 +47,7 @@ public class ForgotPasswordServlet extends HttpServlet {
     // Token expiry set to 15 minutes
     private static final long TOKEN_EXPIRY_MS = 15 * 60 * 1000;
     private static final int MAX_ATTEMPTS_PER_HOUR = 5;
+    private static final String APP_BASE_URL = ConfigUtil.get("app.base.url", "APP_BASE_URL");
 
     /**
      * Sends standardized JSON response to client
@@ -240,7 +241,14 @@ public class ForgotPasswordServlet extends HttpServlet {
                 });
 
                 String subject = "ShaadiSarthi Password Reset";
-                String link = "https://shaadisharthi.theworkpc.com/customer/reset-password?token=" + token;
+                if (APP_BASE_URL == null) {
+                    logger.error("Application base URL is not configured. Please set app.base.url or APP_BASE_URL.");
+                    con.rollback();
+                    responseJson.put("message", "If the email exists in our system, a reset link has been sent.");
+                    sendResponse(response, HttpServletResponse.SC_OK, responseJson);
+                    return;
+                }
+                String link = APP_BASE_URL + "/customer/reset-password?token=" + token;
                 String body = "Dear User,\n\nClick the following link to reset your password:\n" + link
                         + "\n\nThis link expires in 15 minutes.\n\nBest regards,\nShaadiSarthi Team";
 

@@ -47,6 +47,7 @@ public class EmailVerificationServlet extends HttpServlet {
     // Token expiry set to 15 minutes
     private static final long TOKEN_EXPIRY_MS = 15 * 60 * 1000;
     private static final int MAX_ATTEMPTS_PER_HOUR = 5;
+    private static final String APP_BASE_URL = ConfigUtil.get("app.base.url", "APP_BASE_URL");
 
     /**
      * Sends standardized JSON response to client
@@ -234,7 +235,13 @@ public class EmailVerificationServlet extends HttpServlet {
                 });
 
                 String subject = "ShaadiSarthi Email Verification";
-                String link = "https://shaadisharthi.theworkpc.com/customer/register?token=" + token;
+                if (APP_BASE_URL == null) {
+                    logger.error("Application base URL is not configured. Please set app.base.url or APP_BASE_URL.");
+                    responseJson.put("error", "Server configuration error");
+                    sendResponse(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, responseJson);
+                    return;
+                }
+                String link = APP_BASE_URL + "/customer/register?token=" + token;
                 String body = "Dear User,\n\nClick the following link to verify your email and complete registration:\n" + link
                         + "\n\nThis link expires in 15 minutes.\n\nBest regards,\nShaadiSarthi Team";
 

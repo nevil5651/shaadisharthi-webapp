@@ -44,6 +44,9 @@ db.username=${DB_USERNAME:-root}
 db.password=${DB_PASSWORD:-}
 db.driver=${DB_DRIVER:-com.mysql.cj.jdbc.Driver}
 
+# Base App Url
+APP_BASE_URL=${APP_BASE_URL}
+
 # Email
 email.from=${EMAIL_FROM:-}
 email.password=${EMAIL_PASSWORD:-}

@@ -54,6 +54,7 @@ public class ForgotPassword extends HttpServlet {
     // Token expiration time (1 hour)
     private static final long TOKEN_EXPIRY_MS = 60 * 60 * 1000; // 1 hour
     // Rate limiting: maximum reset attempts per hour
+    private static final String APP_BASE_URL = ConfigUtil.get("app.base.url", "APP_BASE_URL");
     private static final int MAX_ATTEMPTS_PER_HOUR = 5;
 
     /**
@@ -223,9 +224,15 @@ public class ForgotPassword extends HttpServlet {
 
                 // Prepare and send reset email
                 String subject = "ShaadiSharthi Password Reset";
-                String link = "https://shaadisharthi.theworkpc.com/provider/reset-password?token=" + token;
-                String body = "Dear Service Provider,\n\nClick the following link to reset your password:\n" + link + "\n\nThis link expires in 1 hour.\n\nBest regards,\nShaadiSharthi Team";
-
+                if (APP_BASE_URL == null) {
+                    logger.error("Application base URL is not configured. Please set app.base.url or APP_BASE_URL.");
+                    con.rollback();
+                    responseJson.put("message", "If the email is registered, a reset link has been sent");
+                    sendResponse(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR, responseJson);
+                    return;
+                }
+                String body = "Dear Service Provider,\n\nClick the following link to reset your password:\n" + APP_BASE_URL + "/provider/reset-password?token=" + token + "\n\nThis link expires in 1 hour.\n\nBest regards,\nShaadiSarthi Team";
+                
                 String from = ConfigUtil.get("email.from", "EMAIL_FROM");
                 String password = ConfigUtil.get("email.password", "EMAIL_PASSWORD");
                 if (from == null || password == null) {

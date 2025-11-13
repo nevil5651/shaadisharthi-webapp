@@ -72,6 +72,7 @@ public class AdminAuthServlet extends HttpServlet {
     private static final int LOGIN_MAX_ATTEMPTS = 10; // Maximum failed login attempts before hard lockout
     private static final int LOGIN_WINDOW_SECONDS = 300; // 5 minutes window for rate limiting
     private static final int RESET_MAX_ATTEMPTS_PER_HOUR = 5; // Max password reset attempts per hour
+    private static final String APP_BASE_URL = ConfigUtil.get("app.base.url", "APP_BASE_URL");
 
     /**
      * Sends standardized JSON response to client
@@ -173,7 +174,11 @@ public class AdminAuthServlet extends HttpServlet {
      */
     private void sendResetEmail(String email, String token, String ipAddress) {
         String subject = "ShaadiSharthi Admin Password Reset";
-        String link = "https://shaadisharthi.theworkpc.com/admin/adminresetpassword?token=" + token;
+        if (APP_BASE_URL == null) {
+            logger.error("Application base URL is not configured. Please set app.base.url or APP_BASE_URL. Cannot send reset email.");
+            return;
+        }
+        String link = APP_BASE_URL + "/admin/adminresetpassword?token=" + token;
         String body = "Dear Admin,\n\nClick the following link to reset your password:\n" + link + "\n\nThis link expires in 15 minutes.\n\nBest regards,\nShaadiSharthi Team";
 
         // Get email configuration from environment/config

@@ -47,6 +47,7 @@ import shaadisharthi.utils.ConfigUtil;
 @WebServlet("/update-status")
 public class ServiceProviderStatusServlet extends HttpServlet {
     private static final Logger logger = LoggerFactory.getLogger(ServiceProviderStatusServlet.class);
+    private static final String APP_BASE_URL = ConfigUtil.get("app.base.url", "APP_BASE_URL");
     
     /**
      * Send standardized JSON response
@@ -136,10 +137,15 @@ public class ServiceProviderStatusServlet extends HttpServlet {
         String body;
         if (status.equals("approved")) {
             subject = "ShaadiSarthi Application Approved";
+            if (APP_BASE_URL == null) {
+                logger.error("Application base URL is not configured. Please set app.base.url or APP_BASE_URL. Cannot send approval email.");
+                return false;
+            }
+            String loginLink = APP_BASE_URL + "/provider";
             body = "Dear Service Provider,\n\n" +
                    "We are pleased to inform you that your application to join ShaadiSarthi has been approved!\n" +
                    "Welcome to the board of ShaadiSarthi. You can now log in to your account and start offering your services.\n" +
-                   "Login here: https://shaadisharthi.theworkpc.com/provider\n\n" +
+                   "Login here: " + loginLink + "\n\n" +
                    "Best regards,\nShaadiSarthi Team";
         } else {
             subject = "ShaadiSarthi Application Status Update";

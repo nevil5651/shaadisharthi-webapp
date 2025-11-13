@@ -31,6 +31,7 @@ import shaadisharthi.utils.ConfigUtil;
  */
 public class EmailService {
     private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
+    private static final String APP_BASE_URL = ConfigUtil.get("app.base.url", "APP_BASE_URL");
     
 
     /**
@@ -74,16 +75,20 @@ public class EmailService {
                 "Customer: %s (%s)\n" +
                 "Booking ID: %d\n" +
                 "Start Date/Time: %s\n" +
-                "Price: %.2f\n" +
+                "Price: %.2f\n" + 
                 "Note:%s\n\n" +
                 "Please log in to your account to accept or reject this booking.\n" +
-                "Login here: https://shaadisharthi.theworkpc.com/provider\n\n" +
+                "Login here: %s\n\n" +
                 "Best regards,\nShaadiSarthi Team",
-                serviceName, customerName, phone, bookingId, startDateTime.toString(), servicePrice, notes
+                serviceName, customerName, phone, bookingId, startDateTime.toString(), servicePrice, notes, APP_BASE_URL + "/provider"
         );
 
         try {
             Message message = new MimeMessage(session);
+            if (APP_BASE_URL == null) {
+                logger.error("Application base URL is not configured. Please set app.base.url or APP_BASE_URL.");
+                return;
+            }
             message.setFrom(new InternetAddress(from));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(providerEmail));
             message.setSubject(subject);
@@ -184,12 +189,17 @@ public class EmailService {
                 "Service: %s\n" +
                 "Start Date/Time: %s\n" +
                 "Price: %.2f\n\n" +
+                "You can view your booking details here: %s\n\n" +
                 "Please prepare accordingly. Contact support if you have questions.\n" +
                 "Best regards,\nShaadiSarthi Team",
-                customerEmail.split("@")[0], bookingId, serviceName, startDateTime.toString(), servicePrice
+                customerEmail.split("@")[0], bookingId, serviceName, startDateTime.toString(), servicePrice, APP_BASE_URL + "/customer/bookings"
         );
 
         try {
+            if (APP_BASE_URL == null) {
+                logger.error("Application base URL is not configured. Please set app.base.url or APP_BASE_URL.");
+                return;
+            }
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(from));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(customerEmail));
