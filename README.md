@@ -23,7 +23,13 @@
 - ![Customer Login page](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Customer%20LoginPage%20and%20ToastNotification.png)
 - ![Customer AccountPage](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Customer%20AccountPage.png)
 - ![ServiceProvider Dashboard](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/ServiceProvider%20Dashboard.png)
-- ![ServiceProvider ViewService](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/ServiceProvider%20ViewService.png) 
+- ![ServiceProvider ViewService](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/ServiceProvider%20ViewService.png)
+- ![ServiceProvider Edit Service Page](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/ServiceProvider%20ServiceEditPage.png)
+- ![ServiceProvider Bookings Management](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/ServiceProvider%20BookingsManagement.png)
+- ![ServiceProvider Account Page](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/ServiceProvider%20AccountPage.png)
+- ![Admin Dashboard](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/AdminDashboard.png)
+- ![Admin UserManagement](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Admin%20user%20Management.png)
+- ![Admin QueryManagement](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Admin%20QueryManagement.png)   
 
 ---
 
