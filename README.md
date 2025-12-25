@@ -13,6 +13,10 @@
 - **Admin Panel**: [shaadisharthi.theworkpc.com/admin](https://shaadisharthi.theworkpc.com/admin)
 
 ---
+## ScreenShots
+- ![LandingPage -LightMode](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Landingpage%20LightMode.png)
+
+---
 
 ## Project Overview
 
