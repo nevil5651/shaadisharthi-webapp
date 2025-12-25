@@ -15,6 +15,15 @@
 ---
 ## ScreenShots
 - ![LandingPage -LightMode](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Landingpage%20LightMode.png)
+- ![LandingPage -DarkMode](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/landing%20page-DarkMode.png)
+- ![Customer Dashboard](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Customer-DashBoard.png)
+- ![Customer VendorsPage](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Customer%20VendorsPage.png)
+- ![Customer ServiceDetailPage](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Customer%20ServiceDetailPage.png)
+- ![Customer BookingsPage](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/CustomerBookingsPage.png)
+- ![Customer Login page](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Customer%20LoginPage%20and%20ToastNotification.png)
+- ![Customer AccountPage](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/Customer%20AccountPage.png)
+- ![ServiceProvider Dashboard](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/ServiceProvider%20Dashboard.png)
+- ![ServiceProvider ViewService](https://github.com/nevil5651/shaadisharthi-webapp/blob/main/ServiceProvider%20ViewService.png) 
 
 ---
 
